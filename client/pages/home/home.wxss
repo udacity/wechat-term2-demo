@@ -1,1 +1,66 @@
 /* pages/home/home.wxss */
+
+.hot-card {
+  position: relative;
+  margin: 32rpx 52rpx 0;
+  height: 326rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.02);
+  border-radius: 13rpx;
+}
+
+.hot-name {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 44rpx;
+  top: 41rpx;
+  width: 300rpx;
+}
+
+.hot-name-line {
+  width: 24rpx;
+  height: 39rpx;
+}
+
+.hot-name-text {
+  margin: 0 20rpx;
+  font-size: 28rpx;
+  color: #34373D;
+  font-weight: bold;
+}
+
+.hot-info {
+  position: absolute;
+  width: 259rpx;
+  height: 188rpx;
+  left: 42rpx; 
+  bottom: 0;
+}
+
+.hot-image {
+  position: absolute;
+  top: 53rpx;
+  right: 47rpx;
+  width: 241rpx;
+  height: 241rpx;
+}
+
+.list-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 90rpx 0 35rpx;
+}
+
+.list-title-line {
+  width: 21rpx;
+  height: 34rpx;
+}
+
+.list-title-text {
+  margin: 0 20rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
