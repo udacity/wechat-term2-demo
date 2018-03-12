@@ -64,7 +64,7 @@
   font-weight: bold;
 }
 
-.temp-row {
+.product-row {
   display: flex;
   justify-content: space-around; 
   margin: 0 52rpx 28rpx;
