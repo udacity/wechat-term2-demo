@@ -14,3 +14,25 @@
   <view class='list-title-text'>春季推荐</view>
   <image class='list-title-line' src='/images/line-black.png'></image>
 </view>
+
+<view class='temp-row'>
+  <navigator class='product-card'>
+    <image class='product-image' src='{{productList[1].image}}' mode='widthFix'></image>
+    <view class='product-name'>{{productList[1].name}}</view>
+    <view class='product-meta'>
+      <view class='product-money'>￥</view>
+      <view class='product-price'>{{productList[1].price}}</view>
+      <view class='product-add'>+</view>
+    </view>
+  </navigator>
+
+    <navigator class='product-card'>
+    <image class='product-image' src='{{productList[1].image}}' mode='widthFix'></image>
+    <view class='product-name'>{{productList[1].name}}</view>
+    <view class='product-meta'>
+      <view class='product-money'>￥</view>
+      <view class='product-price'>{{productList[1].price}}</view>
+      <view class='product-add'>+</view>
+    </view>
+  </navigator>
+</view>
