@@ -1,6 +1,9 @@
 {
   "pages":[
-    "pages/home/home"
+    "pages/home/home",
+    "pages/order/order",
+    "pages/trolley/trolley",
+    "pages/user/user"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",
@@ -8,5 +11,32 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "Wafer Quick Start",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "images/home.png",
+      "selectedIconPath": "images/home-sel.png"
+    },
+    {
+      "text": "订单",
+      "pagePath": "pages/order/order",
+      "iconPath": "images/order.png",
+      "selectedIconPath": "images/order-sel.png"
+    },
+    {
+      "text": "购物车",
+      "pagePath": "pages/trolley/trolley",
+      "iconPath": "images/trolley.png",
+      "selectedIconPath": "images/trolley-sel.png"
+    },
+    {
+      "text": "个人中心",
+      "pagePath": "pages/user/user",
+      "iconPath": "images/user.png",
+      "selectedIconPath": "images/user-sel.png"
+    }
+    ]
   }
 }
