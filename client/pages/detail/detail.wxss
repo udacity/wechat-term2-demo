@@ -1,0 +1,151 @@
+/* pages/detail/detail.wxss */
+
+.product-card {
+  padding-bottom: 15rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.02);
+}
+
+.product-image {
+  display: block; 
+  margin: 0 auto; 
+  margin-left: 100rpx;
+  width: 370rpx;
+  height: 370rpx;
+}
+
+.product-name {
+  margin: 42rpx 49rpx 0;
+  font-size: 38rpx;
+  line-height: 53rpx;
+  color: rgba(29, 29, 38, 0.8);
+  font-weight: bold;
+}
+
+
+.product-source {
+  margin: 5rpx 49rpx 0;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #8B8B8B;
+}
+
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 29rpx;
+}
+
+.product-money {
+  width: 47rpx;
+  height: 47rpx;
+  line-height: 47rpx; 
+  text-align: center;
+  border-radius: 50%;
+  color: #34373D;
+  font-size: 34rpx;
+  font-weight: bold;
+  background: #F7E687;
+}
+
+.product-price {
+  margin: 0 10rpx;
+  font-size: 38rpx;
+}
+
+.info-card {
+  margin: 26rpx 27rpx;
+  padding: 0 26rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.02);
+  border-radius: 13rpx;
+}
+
+.advantage-list {
+  padding: 43rpx 15rpx 39rpx;
+  border-bottom: 1px solid rgba(151, 151, 151, 0.2);
+}
+
+.advantage-item {
+  display: flex;
+  align-items: center;
+}
+
+.advantage-icon {
+  width: 22rpx;
+  height: 16rpx;
+}
+
+.advantage-text {
+  margin-left: 15rpx;
+  font-size: 28rpx;
+  color: #34373D;
+  line-height: 47rpx;
+}
+
+.comment-entry {
+  padding: 26rpx 10rpx 21rpx;
+}
+
+.comment-btn {
+  display: flex;
+  align-items: center;
+}
+
+.comment-title {
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: rgba(29, 29, 38, 0.8);
+  font-weight: bold;
+}
+
+.comment-count {
+  flex: 1;
+  margin-right: 16rpx;
+  text-align: right;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #8B8B8B;
+}
+
+.comment-arrow {
+  width: 11rpx;
+  height: 18rpx;
+}
+
+.comment-preview {
+  margin-top: 26rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #8B8B8B;
+}
+
+.opr-cnt {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.opr-trolley,
+.opr-buy {
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #34373D;
+  font-weight: bold;
+}
+
+.opr-trolley {
+  background: rgba(245, 224, 105, 0.6);
+}
+
+.opr-buy {
+  background: #F5E069;
+}
