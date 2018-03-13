@@ -9,7 +9,6 @@
 .product-image {
   display: block; 
   margin: 0 auto; 
-  margin-left: 100rpx;
   width: 370rpx;
   height: 370rpx;
 }
