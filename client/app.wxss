@@ -56,9 +56,15 @@ page {
   height: 80rpx;
   line-height: 80rpx;
   background: #F5E069;
+  outline: none;
+  border: none;
   border-radius: 10rpx;
   font-size: 30rpx;
   text-align: center;
   color: #34373D;
   font-weight: bold;
+}
+
+.unlogin-btn::after {
+  border: none;
 }

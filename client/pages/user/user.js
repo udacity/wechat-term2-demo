@@ -1,4 +1,6 @@
 // pages/user/user.js
+const app = getApp()
+
 Page({
 
   /**
@@ -6,10 +8,16 @@ Page({
    */
   data: {
     userInfo: null,
-    // userInfo: {
-    //   nickName: "优达学城",
-    //   avatarUrl: "", // 头像 URL 地址
-    // }, // 虚拟数据
+  },
+
+  onTapLogin() {
+    app.login({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo
+        })
+      }
+    })
   },
 
   onTapAddress() {
@@ -45,7 +53,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**
