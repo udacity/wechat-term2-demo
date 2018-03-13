@@ -1,1 +1,25 @@
 /* pages/trolley/trolley.wxss */
+.trolley-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 37rpx 27rpx;
+  height: 431rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.02);
+  border-radius: 13rpx;
+}
+
+.empty-image {
+  margin-bottom: 29rpx;
+  width: 90rpx;
+  height: 90rpx;
+  opacity: 0.4;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: rgba(139, 139, 139, 0.8);
+}
