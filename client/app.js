@@ -54,6 +54,32 @@ App({
       })
     },
 
+    checkSession({ success, error }) {
+      if (userInfo) {
+        return success && success({
+          userInfo
+        })
+      }
 
+      wx.checkSession({
+        success: () => {
+          this.getUserInfo({
+            success: res => {
+              userInfo = res.userInfo
+
+              success && success({
+                userInfo
+              })
+            },
+            fail: () => {
+              error && error()
+            }
+          })
+        },
+        fail: () => {
+          error && error()
+        }
+      })
+    }
 
 })
