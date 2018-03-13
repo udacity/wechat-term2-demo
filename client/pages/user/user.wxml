@@ -1,2 +1,29 @@
 <!--pages/user/user.wxml-->
-<text>个人中心</text>
+<image class="bg" src="/images/bg.png"></image>
+<view wx:if="{{!userInfo}}">
+  <view class="unlogin-card">
+    <view class="unlogin-head"></view>
+    <view class="unlogin-info">
+      <view class="unlogin-text">未登录</view>
+      <view class="unlogin-tips">点击微信登录后可方便购物</view>
+    </view>
+  </view>
+  <view class="unlogin-btn">微信登录</view>
+</view>
+<view class="user-card" wx:else>
+  <view class="user-info">
+    <image class="user-head" src="{{userInfo.avatarUrl}}"></image>
+    <view class="user-name">{{userInfo.nickName}}</view>
+  </view>
+  <view class="user-split"></view>
+  <view class="user-options">
+    <view class="option" bindtap="onTapAddress">
+      <view class="option-title">收货地址</view>
+      <image class="option-arrow" src="/images/grey-arrow.png"></image>
+    </view>
+    <view class="option" bindtap="onTapKf">
+      <view class="option-title">联系客服</view>
+      <image class="option-arrow" src="/images/grey-arrow.png"></image>
+    </view>
+  </view>
+</view>
