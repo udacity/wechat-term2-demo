@@ -38,6 +38,19 @@
       </view>
     </view>
   </scroll-view>
+  <view class='trolley-account'>
+    <view class='trolley-total'>
+      <view class="trolley-check-wrapper {{isTrolleyTotalCheck ? 'check' : ''}}">
+        <image class='trolley-check' src='/images/check.png' wx:if='{{isTrolleyTotalCheck}}'></image>
+      </view>
+      <view class="trolley-total-text">全选</view>
+    </view>
+    <view class="trolley-account-text">
+      <view>总价</view>
+      <view class="trolley-account-now">¥ {{trolleyAccount}}</view>
+    </view>
+    <view class="pay-btn {{trolleyAccount ? 'canpay' : ''}}">结算</view>
+  </view>
 
 </view>
 <view class="trolley-empty" wx:else>

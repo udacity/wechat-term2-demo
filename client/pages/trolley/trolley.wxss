@@ -142,3 +142,47 @@
 .count-now {
   margin: 0 18rpx;
 }
+
+.trolley-account {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding-left: 24rpx;
+  height: 100rpx;
+  background: #fff;
+}
+
+.trolley-account-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 29rpx;
+  color: rgba(52, 55, 61, 0.8);
+  font-size: 24rpx;
+  line-height: 33rpx;
+}
+
+.trolley-account-now {
+  margin-left: 12rpx;
+  font-size: 34rpx;
+  line-height: 48rpx;
+  color: #000000;
+}
+
+.pay-btn {
+  width: 250rpx;
+  height: 100%;
+  background: #F5E069;
+  color: rgba(52, 55, 61, 0.5);
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.pay-btn.canpay {
+  color: #34373D;
+}
