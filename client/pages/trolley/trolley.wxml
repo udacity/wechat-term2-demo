@@ -10,7 +10,44 @@
   </view>
   <button class="unlogin-btn" open-type="getUserInfo" bindgetuserinfo="onTapLogin">微信登录</button>
 </view>
+<view wx:elif="{{trolleyList.length > 0}}">
+  <view class='trolley-top'>
+    <view class='trolley-total'>
+      <view class="trolley-check-wrapper white {{isTrolleyTotalCheck ? 'check' : ''}}">
+        <image class='trolley-check' src='/images/check.png' wx:if='{{isTrolleyTotalCheck}}'></image>
+      </view>
+      <view class='trolley-total-text'>全选</view>
+    </view>
+    <view class='trolley-edit'>{{isTrolleyEdit ? '完成' : '编辑'}}</view>
+  </view>
+  <scroll-view>
+    <view class='product-card'>
+      <view class="trolley-check-wrapper {{trolleyCheckMap[trolleyList[0].id] ? 'check' : ''}}">
+        <image class="trolley-check" src='/images/check.png' wx:if="{{trolleyCheckMap[trolleyList[0].id]}}"></image>
+      </view>
+       <image class="product-img" src="{{trolleyList[0].image}}"></image> 
+      <view class='product-info'>
+        <view class='product-name'>{{trolleyList[0].name}}</view>
+        <view class='product-price'>￥ {{trolleyList[0].price}}</view>
+        <view class="product-count">x {{trolleyList[0].count}}</view>
+      </view>
+    </view>
 
+    <view class='product-card'>
+      <view class="trolley-check-wrapper {{trolleyCheckMap[trolleyList[1].id] ? 'check' : ''}}">
+        <image class="trolley-check" src='/images/check.png' wx:if="{{trolleyCheckMap[trolleyList[1].id]}}"></image>
+      </view>
+       <image class="product-img" src="{{trolleyList[1].image}}"></image> 
+      <view class='product-info'>
+        <view class='product-name'>{{trolleyList[1].name}}</view>
+        <view class='product-price'>￥ {{trolleyList[1].price}}</view>
+        <view class="product-count">x {{trolleyList[1].count}}</view>
+      </view>
+    </view>
+
+  </scroll-view>
+
+</view>
 <view class="trolley-empty" wx:else>
   <image class="empty-image" src="/images/trolley.png"></image>
   <view class="empty-text">购物车是空的</view>
