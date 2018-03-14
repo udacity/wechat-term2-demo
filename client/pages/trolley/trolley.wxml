@@ -22,7 +22,7 @@
   </view>
   <scroll-view class='product-list' scroll-y scroll-with-animation enable-back-to-top>
     <view class='product-card' wx:for='{{trolleyList}}' wx:for-item='item' wx:key='id'>
-      <view class="trolley-check-wrapper  {{trolleyCheckMap[item.id] ? 'check' : ''}}">
+      <view class="trolley-check-wrapper  {{trolleyCheckMap[item.id] ? 'check' : ''}}" bindtap='onTapCheckSingle' data-id="{{item.id}}">
         <image class="trolley-check" src='/images/check.png' wx:if="{{trolleyCheckMap[item.id]}}"></image>
       </view>
       <image class="product-img" src="{{item.image}}"></image>

@@ -66,6 +66,18 @@ Page({
     })
   },
 
+  onTapCheckSingle(event) {
+    let checkId = event.currentTarget.dataset.id
+    let trolleyCheckMap = this.data.trolleyCheckMap
+
+    // 单项商品被选中/取消
+    trolleyCheckMap[checkId] = !trolleyCheckMap[checkId]
+
+    this.setData({
+      trolleyCheckMap
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
