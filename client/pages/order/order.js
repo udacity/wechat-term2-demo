@@ -10,42 +10,7 @@ Page({
    */
   data: {
     userInfo: null,
-    orderList: [
-      {
-        id: 0,
-        list: [{
-          count: 1,
-          image: '填入任意你之前上传到腾讯云的图片链接',
-          name: '商品1',
-          price: 50.5,
-        }]
-      },
-      {
-        id: 1,
-        list: [{
-          count: 1,
-          image: '填入任意你之前上传到腾讯云的图片链接',
-          name: '商品1',
-          price: 50.5,
-        },
-        {
-          count: 1,
-          image: '填入任意你之前上传到腾讯云的图片链接',
-          name: '商品2',
-          price: 50.5,
-        }
-        ]
-      },
-      {
-        id: 2,
-        list: [{
-          count: 1,
-          image: '填入任意你之前上传到腾讯云的图片链接',
-          name: '商品2',
-          price: 50.5,
-        }]
-      }
-    ], // 订单列表
+    orderList: [], // 订单列表
   },
 
   onTapLogin() {
@@ -56,13 +21,50 @@ Page({
         })
       }
     })
+
+    this.getOrder()
+  },
+
+  getOrder() {
+    wx.showLoading({
+      title: '刷新订单数据...',
+    })
+
+    qcloud.request({
+      url: config.service.orderList,
+      login: true,
+      success: result => {
+        wx.hideLoading()
+
+        let data = result.data
+        console.log(data)
+        if(!data.code){
+          this.setData({
+            orderList: data.data
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '刷新订单数据失败',
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+
+        wx.showToast({
+          icon: 'none',
+          title: '刷新订单数据失败',
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
   },
 
   /**
@@ -81,6 +83,7 @@ Page({
         this.setData({
           userInfo
         })
+        this.getOrder()
       }
     })
   },

@@ -5,7 +5,6 @@ module.exports = {
    * 创建订单
    * 
    */
-
   add: async ctx => {
     let user = ctx.state.$wxInfo.userinfo.openId
     let productList = ctx.request.body.list || []
@@ -34,6 +33,38 @@ module.exports = {
 
     ctx.state.data = {}
 
-  }
+  },
+
+/**
+ * 获取已购买订单列表
+ * 
+ */
+list: async ctx => {
+  let user = ctx.state.$wxInfo.userinfo.openId
+
+  let list = await DB.query('SELECT order_user.id AS `id`, order_user.user AS `user`, order_user.create_time AS `create_time`, order_product.product_id AS `product_id`, order_product.count AS `count`, product.name AS `name`, product.image AS `image`, product.price AS `price` FROM order_user LEFT JOIN order_product ON order_user.id = order_product.order_id LEFT JOIN product ON order_product.product_id = product.id WHERE order_user.user = ? ORDER BY order_product.order_id', [user])
+
+  // 将数据库返回的数据组装成页面呈现所需的格式
+
+  let ret = []
+  let cacheMap = {}
+  let block = []
+  let id = 0
+  list.forEach(order => {
+    if (!cacheMap[order.id]) {
+      block = []
+      ret.push({
+        id: ++id,
+        list: block
+      })
+
+      cacheMap[order.id] = true
+    }
+
+    block.push(order)
+  })
+
+  ctx.state.data = ret
+  },
 
 }
