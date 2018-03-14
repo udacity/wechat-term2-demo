@@ -73,7 +73,14 @@
   line-height: 33rpx;
 }
 
-
+.product-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 54rpx;
+  bottom: 100rpx; 
+  padding-bottom: 30rpx;
+}
 
 .product-card {
   display: flex;
@@ -112,4 +119,26 @@
 
 .product-count {
   text-align: right;
+}
+
+.product-count-edit {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.count-minus,
+.count-add {
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  border-radius: 50%;
+  border: 3rpx solid #F6E474;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.count-now {
+  margin: 0 18rpx;
 }

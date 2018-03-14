@@ -23,7 +23,7 @@ Page({
       image: 'https://s3.cn-north-1.amazonaws.com.cn/u-img/product2.jpg',
       price: 158,
       source: '海外·新西兰',
-      count: 1,
+      count: 3,
     }], // 购物车商品列表
     trolleyCheckMap: [undefined, true, undefined], // 购物车中选中的id哈希表
     trolleyAccount: 45, // 购物车结算总价
