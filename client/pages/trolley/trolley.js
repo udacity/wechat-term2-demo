@@ -12,7 +12,7 @@ Page({
     userInfo: null,
     trolleyList: [], // 购物车商品列表
     trolleyCheckMap: [], // 购物车中选中的id哈希表
-    trolleyAccount: 45, // 购物车结算总价
+    trolleyAccount: 0, // 购物车结算总价
     isTrolleyEdit: false, // 购物车是否处于编辑状态
     isTrolleyTotalCheck: false, // 购物车中商品是否全选
   },
@@ -71,6 +71,7 @@ Page({
     let trolleyCheckMap = this.data.trolleyCheckMap
     let trolleyList = this.data.trolleyList
     let isTrolleyTotalCheck = this.data.isTrolleyTotalCheck
+    let trolleyAccount = this.data.trolleyAccount
     let numTotalProduct
     let numCheckedProduct = 0
 
@@ -84,10 +85,13 @@ Page({
     })
 
     isTrolleyTotalCheck = (numTotalProduct === numCheckedProduct) ? true : false
+
+    trolleyAccount = this.calcAccount(trolleyList, trolleyCheckMap)
     
     this.setData({
       trolleyCheckMap,
-      isTrolleyTotalCheck
+      isTrolleyTotalCheck,
+      trolleyAccount
     })
   },
 
@@ -95,6 +99,7 @@ Page({
     let trolleyCheckMap = this.data.trolleyCheckMap
     let trolleyList = this.data.trolleyList
     let isTrolleyTotalCheck = this.data.isTrolleyTotalCheck
+    let trolleyAccount = this.data.trolleyAccount
 
     // 全选按钮被选中/取消
     isTrolleyTotalCheck = !isTrolleyTotalCheck
@@ -104,11 +109,23 @@ Page({
       trolleyCheckMap[product.id] = isTrolleyTotalCheck
     })
 
+    trolleyAccount = this.calcAccount(trolleyList, trolleyCheckMap)
+
     this.setData({
       isTrolleyTotalCheck,
-      trolleyCheckMap
+      trolleyCheckMap,
+      trolleyAccount
     })
     
+  },
+
+  calcAccount(trolleyList, trolleyCheckMap) {
+    let account = 0
+    trolleyList.forEach(product => {
+      account = trolleyCheckMap[product.id] ? account + product.price * product.count : account
+    })
+
+    return account
   },
 
   /**
