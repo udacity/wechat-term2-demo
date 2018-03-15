@@ -14,7 +14,7 @@ Page({
     trolleyCheckMap: [], // 购物车中选中的id哈希表
     trolleyAccount: 45, // 购物车结算总价
     isTrolleyEdit: false, // 购物车是否处于编辑状态
-    isTrolleyTotalCheck: true, // 购物车中商品是否全选
+    isTrolleyTotalCheck: false, // 购物车中商品是否全选
   },
 
   onTapLogin() {
@@ -76,6 +76,26 @@ Page({
     this.setData({
       trolleyCheckMap
     })
+  },
+
+  onTapCheckTotal(event) {
+    let trolleyCheckMap = this.data.trolleyCheckMap
+    let trolleyList = this.data.trolleyList
+    let isTrolleyTotalCheck = this.data.isTrolleyTotalCheck
+
+    // 全选按钮被选中/取消
+    isTrolleyTotalCheck = !isTrolleyTotalCheck
+
+    // 遍历并修改所有商品的状态
+    trolleyList.forEach(product => {
+      trolleyCheckMap[product.id] = isTrolleyTotalCheck
+    })
+
+    this.setData({
+      isTrolleyTotalCheck,
+      trolleyCheckMap
+    })
+    
   },
 
   /**
