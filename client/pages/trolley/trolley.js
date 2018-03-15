@@ -69,12 +69,25 @@ Page({
   onTapCheckSingle(event) {
     let checkId = event.currentTarget.dataset.id
     let trolleyCheckMap = this.data.trolleyCheckMap
+    let trolleyList = this.data.trolleyList
+    let isTrolleyTotalCheck = this.data.isTrolleyTotalCheck
+    let numTotalProduct
+    let numCheckedProduct = 0
 
     // 单项商品被选中/取消
     trolleyCheckMap[checkId] = !trolleyCheckMap[checkId]
 
+    // 判断选中的商品个数是否需商品总数相等
+    numTotalProduct = trolleyList.length
+    trolleyCheckMap.forEach(checked => {
+      numCheckedProduct = checked ? numCheckedProduct+1 : numCheckedProduct
+    })
+
+    isTrolleyTotalCheck = (numTotalProduct === numCheckedProduct) ? true : false
+    
     this.setData({
-      trolleyCheckMap
+      trolleyCheckMap,
+      isTrolleyTotalCheck
     })
   },
 
