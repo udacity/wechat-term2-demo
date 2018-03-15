@@ -128,6 +128,58 @@ Page({
     return account
   },
 
+  onTapEditTrolley() {
+    let isTrolleyEdit = this.data.isTrolleyEdit
+
+    this.setData({
+      isTrolleyEdit: !isTrolleyEdit
+    })
+  },
+
+  adjustTrolleyProductCount(event) {
+    let trolleyCheckMap = this.data.trolleyCheckMap
+    let trolleyList = this.data.trolleyList
+    let dataset = event.currentTarget.dataset
+    let adjustType = dataset.type
+    let productId = dataset.id
+    let product 
+    let index
+        
+
+    for (index = 0; index < trolleyList.length; index++) {
+      if (productId === trolleyList[index].id) {
+        product = trolleyList[index]
+        break
+      }
+    }
+
+      if (product) {
+        if (adjustType === 'add') {
+          // 点击加号
+          product.count++
+        } else {
+          // 点击减号
+          if (product.count <= 1) {
+            // 商品数量不超过1，点击减号相当于删除
+            delete trolleyCheckMap[productId]
+            trolleyList.splice(index, 1)
+          } else {
+            // 商品数量大于1
+            product.count--
+          }
+        }
+      }
+
+      // 调整结算总价
+      let trolleyAccount = this.calcAccount(trolleyList, trolleyCheckMap)
+
+      this.setData({
+        trolleyAccount,
+        trolleyList,
+        trolleyCheckMap
+      })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
