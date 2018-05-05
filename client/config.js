@@ -46,6 +46,9 @@ var config = {
 
         // 更新购物车商品列表
         updateTrolley: `${host}/weapp/trolley`,
+
+        // 添加评论
+        addComment: `${host}/weapp/comment`,
     }
 };
 
