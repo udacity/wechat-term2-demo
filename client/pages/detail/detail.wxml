@@ -19,7 +19,7 @@
       <view class='advantage-text'>24小时内发货并配送运费险</view>
     </view>
   </view>
-  <view class='comment-entry'>
+  <view class='comment-entry' bindtap='onTapCommentEntry'>
     <view class='comment-btn'>
       <view class='comment-title'>已买评价</view>
       <view class='comment-count'>1条</view>
