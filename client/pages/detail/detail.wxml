@@ -22,10 +22,10 @@
   <view class='comment-entry' bindtap='onTapCommentEntry'>
     <view class='comment-btn'>
       <view class='comment-title'>已买评价</view>
-      <view class='comment-count'>1条</view>
+      <view class='comment-count'>{{product.commentCount}}条</view>
       <image class='comment-arrow' src='/images/grey-arrow.png'></image>
     </view>
-    <view class='comment-preview'>"test"</view>
+    <view class='comment-preview'>“{{product.firstComment.content}}”</view>
   </view>
 </view>
 <view class='opr-cnt'>

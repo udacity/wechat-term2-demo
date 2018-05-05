@@ -11,7 +11,6 @@ Page({
    */
   data: {
     product: {},
-    haveComment: true
   },
 
   getProduct(id){
@@ -131,7 +130,7 @@ Page({
 
   onTapCommentEntry() {
     let product = this.data.product
-    if (this.data.haveComment) {
+    if (product.commentCount) {
       wx.navigateTo({
         url: `/pages/comment/comment?id=${product.id}&price=${product.price}&name=${product.name}&image=${product.image}`
         })

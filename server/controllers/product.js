@@ -20,6 +20,9 @@ module.exports = {
       product = {}
     }
 
+    product.commentCount = (await DB.query('SELECT COUNT(id) AS comment_count FROM comment WHERE comment.product_id = ?', [productId]))[0].comment_count || 0
+    product.firstComment = (await DB.query('SELECT * FROM comment WHERE comment.product_id = ? LIMIT 1 OFFSET 0', [productId]))[0] || null
+
     ctx.state.data = product
   }
 }
