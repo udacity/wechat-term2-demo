@@ -23,7 +23,7 @@
         <view class="order-price">¥ {{item.price}}</view>
       </view>
       <view class="order-opr">
-        <view class="order-btn">评价</view>
+        <navigator class="order-btn" url="/pages/add-comment/add-comment?id={{item.product_id}}&price={{item.price}}&name={{item.name}}&image={{item.image}}">评价</navigator>
         <view class="order-count">x{{item.count}}</view>
       </view>
     </view>
