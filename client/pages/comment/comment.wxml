@@ -16,6 +16,9 @@
         <view class="comment-time">{{item.createTime}}</view>
       </view>
       <view class='comment-content'>{{item.content}}</view>
+      <view class='preview-list' wx:if='{{item.images.length}}'>
+        <image class='preview-item' wx:for='{{item.images}}' wx:for-item='pitem' wx:key='*this' src='{{pitem}}' bindtap='previewImg' data-src='{{pitem}}' data-urls='{{item.images}}'></image>
+      </view>
     </view>
   </view>
 </view>
