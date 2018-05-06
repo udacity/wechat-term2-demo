@@ -9,11 +9,73 @@ Page({
   data: {
     product: {},
     commentValue: '',
+    commentImages: [],
+  },
+
+  uploadImage(cb) {
+    let commentImages = this.data.commentImages
+    let images = []
+
+    if (commentImages.length) {
+      let length = commentImages.length
+      for (let i = 0; i < length; i++) {
+        wx.uploadFile({
+          url: config.service.uploadUrl,
+          filePath: commentImages[i],
+          name: 'file',
+          success: res => {
+            let data = JSON.parse(res.data)
+            length--
+
+            if (!data.code) {
+              images.push(data.data.imgUrl)
+            }
+
+            if (length <= 0) {
+              cb && cb(images)
+            }
+          },
+          fail: () => {
+            length--
+          }
+        })
+      }
+    } else {
+      cb && cb(images)
+    }
   },
 
   onInput(event) {
     this.setData({
       commentValue: event.detail.value.trim()
+    })
+  },
+
+  chooseImage() {
+
+    wx.chooseImage({
+      count: 3,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: res => {
+
+        let commentImages = res.tempFilePaths
+
+        this.setData({
+          commentImages
+        })
+        
+      },
+    })
+  },
+
+  previewImg(event) {
+    let target = event.currentTarget
+    let src = target.dataset.src
+
+    wx.previewImage({
+      current: src,
+      urls: this.data.commentImages
     })
   },
 
@@ -25,42 +87,45 @@ Page({
       title: '正在发表评论'
     })
 
-    qcloud.request({
-      url: config.service.addComment,
-      login: true,
-      method: 'PUT',
-      data: {
-        content: content,
-        product_id: this.data.product.id
-      },
-      success: result => {
-        wx.hideLoading()
+    this.uploadImage(images => {
+      qcloud.request({
+        url: config.service.addComment,
+        login: true,
+        method: 'PUT',
+        data: {
+          images,
+          content,
+          product_id: this.data.product.id
+        },
+        success: result => {
+          wx.hideLoading()
 
-        let data = result.data
+          let data = result.data
 
-        if (!data.code) {
-          wx.showToast({
-            title: '发表评论成功'
-          })
-          setTimeout(() => {
-            wx.navigateBack()
-          }, 1500)
+          if (!data.code) {
+            wx.showToast({
+              title: '发表评论成功'
+            })
 
-        } else {
+            setTimeout(() => {
+              wx.navigateBack()
+            }, 1500)
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '发表评论失败'
+            })
+          }
+        },
+        fail: () => {
+          wx.hideLoading()
+
           wx.showToast({
             icon: 'none',
             title: '发表评论失败'
           })
         }
-      },
-      fail: () => {
-        wx.hideLoading()
-
-        wx.showToast({
-          icon: 'none',
-          title: '发表评论失败'
-        })
-      }
+      })
     })
   },
 
