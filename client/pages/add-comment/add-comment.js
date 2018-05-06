@@ -52,6 +52,7 @@ Page({
   },
 
   chooseImage() {
+    let currentImages = this.data.commentImages
 
     wx.chooseImage({
       count: 3,
@@ -59,10 +60,14 @@ Page({
       sourceType: ['album', 'camera'],
       success: res => {
 
-        let commentImages = res.tempFilePaths
+        currentImages = currentImages.concat(res.tempFilePaths)
+
+        let end = currentImages.length
+        let begin = Math.max(end - 3, 0)
+        currentImages = currentImages.slice(begin, end)
 
         this.setData({
-          commentImages
+          commentImages: currentImages
         })
         
       },
